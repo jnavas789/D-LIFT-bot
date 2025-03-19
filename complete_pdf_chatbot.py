@@ -7,8 +7,13 @@ from sklearn.metrics.pairwise import cosine_similarity
 
 # Set password directly in the code for this standalone version
 # In production, use environment variables or Streamlit secrets
-ADMIN_PASSWORD = "your_secure_password"  # Change this!
+import streamlit as st  
 
+# Password setup  
+try:  
+    ADMIN_PASSWORD = st.secrets["ADMIN_PASSWORD"]  
+except:  
+    ADMIN_PASSWORD = "your_secure_password"  # Fallback password  
 # Sample summaries embedded directly in the code
 # In production, these would be loaded from files
 POLICY_SUMMARY = """
